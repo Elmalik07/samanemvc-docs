@@ -1,0 +1,71 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Configuration · Samane MVC Framework </title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="Cette configuration vous permettra de gérer la connexion à la base données à partir du fichier ```config/database.php```"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Configuration · Samane MVC Framework "/><meta property="og:type" content="website"/><meta property="og:url" content="https://Elmalik07.githib.io/samanemvc-docs/"/><meta property="og:description" content="Cette configuration vous permettra de gérer la connexion à la base données à partir du fichier ```config/database.php```"/><meta property="og:image" content="https://Elmalik07.githib.io/samanemvc-docs/img/undraw_online.svg"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://Elmalik07.githib.io/samanemvc-docs/img/undraw_tweetstorm.svg"/><link rel="shortcut icon" href="/samanemvc-docs/img/favicon.ico"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script src="/samanemvc-docs/js/scrollSpy.js"></script><link rel="stylesheet" href="/samanemvc-docs/css/main.css"/><script src="/samanemvc-docs/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/samanemvc-docs/"><img class="logo" src="/samanemvc-docs/img/favicon.ico" alt="Samane MVC Framework "/><h2 class="headerTitleWithLogo">Samane MVC Framework </h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/samanemvc-docs/docs/introduction" target="_self">Docs</a></li><li class=""><a href="/samanemvc-docs/tutorial" target="_self">Tutorial</a></li><li class=""><a href="/samanemvc-docs/help" target="_self">Help</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>Samane MVC</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">Samane MVC</h3><ul class=""><li class="navListItem"><a class="navItem" href="/samanemvc-docs/docs/introduction">Introduction</a></li><li class="navListItem"><a class="navItem" href="/samanemvc-docs/docs/installation">Installation</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/samanemvc-docs/docs/configuration">Configuration</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Guides</h3><ul class=""><li class="navListItem"><a class="navItem" href="/samanemvc-docs/docs/controllers">Controllers</a></li><li class="navListItem"><a class="navItem" href="/samanemvc-docs/docs/views">Views</a></li><li class="navListItem"><a class="navItem" href="/samanemvc-docs/docs/models">Models</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 id="__docusaurus" class="postHeaderTitle">Configuration</h1></header><article><div><span><p>Cette configuration vous permettra de gérer la connexion à la base données à partir du fichier <code>config/database.php</code></p>
+<pre><code class="hljs css language-php"><span class="hljs-meta">&lt;?php</span>
+    $choix = <span class="hljs-string">"ORM"</span>;
+    <span class="hljs-comment">//mettre à on pour activer la connexion à la base de données</span>
+    $etat = <span class="hljs-string">'off'</span>; <span class="hljs-comment">//on or off</span>
+    $orm = <span class="hljs-keyword">array</span>(
+                <span class="hljs-string">'dbname'</span> =&gt; <span class="hljs-string">'samanemvcorm_test'</span>,
+                <span class="hljs-string">'user'</span>     =&gt; <span class="hljs-string">'root'</span>,
+                <span class="hljs-string">'password'</span> =&gt; <span class="hljs-string">'secret'</span>,
+                <span class="hljs-string">'host'</span> =&gt; <span class="hljs-string">'127.0.0.1'</span>,
+                <span class="hljs-string">'driver'</span> =&gt; <span class="hljs-string">'pdo_mysql'</span>,
+            );
+<span class="hljs-meta">?&gt;</span>
+</code></pre>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/samanemvc-docs/docs/installation"><span class="arrow-prev">← </span><span>Installation</span></a><a class="docs-next button" href="/samanemvc-docs/docs/controllers"><span>Controllers</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/samanemvc-docs/" class="nav-home"></a><div><h5>Docs</h5><a href="/samanemvc-docs/docs/en/introduction.html">Getting Started</a><a href="/samanemvc-docs/docs/en/installation.html">Guides</a><a href="tutorial.html">Tutorial</a></div><div><h5>Community</h5><a href="/samanemvc-docs/en/users.html">User Showcase</a><a href="https://discord.com/">Discord</a></div><div><h5>More</h5><a href="https://github.com/" target="_blank" rel="noreferrer noopener">GitHub</a><a href="https://facebook.com" target="_blank" rel="noreferrer noopener">Facebook</a><a href="https://linkedin.com" target="_blank" rel="noreferrer noopener">Linkedin</a><a href="https://youtube.com" target="_blank" rel="noreferrer noopener">Youtube</a></div><div><h5>Contact</h5><a href="http://samanemvc.sn">Samane MVC</a></div><div></div></section><section class="copyright">Copyright © 2020 Samane MVC</section></footer></div></body></html>
